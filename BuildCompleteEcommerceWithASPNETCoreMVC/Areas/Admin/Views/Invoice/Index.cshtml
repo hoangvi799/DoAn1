@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Danh Sách Hóa Đơn
+    </h1>
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+             
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="customerTable" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Created</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var invoice in ViewBag.invoices)
+                            {
+                            <tr>
+                                <td>@invoice.Id</td>
+                                <td>@invoice.Name</td>
+                                <td>@invoice.Created.ToString("MM/dd/yyyy")</td>
+                                <td>@(invoice.Status == 1 ? "Pending" : "Done")</td>
+                                <td><a asp-area="admin" asp-controller="invoice" asp-action="details" asp-route-id="@invoice.Id">Details</a></td>
+                            </tr>
+                            }
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Created</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $('#customerTable').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>
+

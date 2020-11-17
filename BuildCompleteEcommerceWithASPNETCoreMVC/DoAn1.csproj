@@ -1,0 +1,135 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\admin\bower_components\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\admin\bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot\admin\bower_components\bootstrap\dist\css\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\admin\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="wwwroot\admin\bower_components\jvectormap\jquery-jvectormap.css" />
+    <Content Include="wwwroot\admin\bower_components\lonicons\css\ionicons.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\alerts.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\badges.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\breadcrumbs.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\button-groups.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\buttons.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\carousel.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\close.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\code.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\component-animations.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\dropdowns.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\forms.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\glyphicons.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\grid.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\input-groups.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\jumbotron.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\labels.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\list-group.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\media.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\alerts.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\background-variant.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\border-radius.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\buttons.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\center-block.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\clearfix.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\forms.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\gradients.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\grid-framework.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\grid.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\hide-text.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\image.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\labels.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\list-group.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\nav-divider.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\nav-vertical-align.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\opacity.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\pagination.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\panels.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\progress-bar.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\reset-filter.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\reset-text.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\responsive-visibility.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\tab-focus.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\table-row.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\text-emphasis.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\text-overflow.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\mixins\vendor-prefixes.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\modals.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\navbar.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\navs.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\normalize.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\pager.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\pagination.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\panels.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\popovers.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\print.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\progress-bars.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\reponsive-utilities.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\responsive-embed.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\scaffolding.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\tables.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\thumbnails.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\tooltip.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\type.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\utilities.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\css\less\wells.less" />
+    <None Include="wwwroot\admin\bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\admin\bower_components\chart.js\Chart.js" />
+    <None Include="wwwroot\admin\bower_components\fastclick\lib\fastclick.js" />
+    <None Include="wwwroot\admin\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\admin\bower_components\jquery-sparkline\dist\jquery.sparkline.min.js" />
+    <None Include="wwwroot\admin\bower_components\jquery\dist\jquery.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="wwwroot\slideshows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Category\AddSubCategory.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Category\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Category\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SlideShow\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SlideShow\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SlideShow\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Components\Search\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

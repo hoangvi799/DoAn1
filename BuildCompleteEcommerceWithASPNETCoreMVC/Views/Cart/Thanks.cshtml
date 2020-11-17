@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<ul class="breadcrumb">
+    <li><a asp-controller="home">Home</a> <span class="divider">/</span></li>
+    <li class="active">Thanks</li>
+</ul>
+<h3> Cảm ơn bạn đã mua sản phẩm</h3>
+<hr class="soft" />
+
+<a asp-controller="home" asp-action="index" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>

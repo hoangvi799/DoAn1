@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Customer Dashboard";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model DoAn1.Models.Account
+
+<ul class="breadcrumb">
+   <li><a asp-controller="home" asp-action="index">Home</a> <span class="divider">/</span></li>
+   <li class="active">DashBoard</li>
+</ul>
+    <h3>Customer Dashboard</h3>
+    <div class="well">
+        <h4>
+            <a asp-controller="customer" asp-action="profile">Thông tin tài khoản</a>
+        </h4>
+        <hr class="soft" />
+
+        <h4>
+            <a asp-controller="customer" asp-action="history">Quản Lý Đơn Hàng</a>
+        </h4>
+        <hr class="soft" />
+
+        <h4>
+            <a asp-controller="customer" asp-action="SignOut">Đăng Xuất</a>
+        </h4>
+        <hr class="soft" />
+    </div>
+

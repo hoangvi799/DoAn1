@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Invoice
+        <small>@ViewBag.invoice.Id</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-area="admin" asp-controller="dashboard" asp-action="index"><i class="fa fa-dashboard"></i>Home</a></li>
+    </ol>
+</section>
+
+<section class="invoice">
+    <!-- title row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i> @ViewBag.invoice.Name
+                <small class="pull-right">Date: @ViewBag.invoice.Created.ToString("MM/dd/yyyy")</small>
+            </h2>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+        
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            To
+            <address>
+                <strong>@ViewBag.invoice.Account.FullName</strong><br>
+                @ViewBag.invoice.Account.Address<br>
+                Phone: @ViewBag.invoice.Account.Phone<br>
+                Email: @ViewBag.invoice.Account.Email
+            </address>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Table row -->
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var invoiceDetails in ViewBag.invoice.InvoiceDetailses)
+                    {
+                    <tr>
+                        <td>@invoiceDetails.Product.Id</td>
+                        <td>@invoiceDetails.Product.Name</td>
+                        <td>VND:@invoiceDetails.Product.Price</td>
+                        <td>@invoiceDetails.Product.Quantity</td>
+                        <td>VND:@(invoiceDetails.Product.Price * invoiceDetails.Product.Quantity)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
+    @if (ViewBag.invoice.Status == 1)
+    {
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <form method="post" asp-area="admin" asp-controller="invoice" asp-action="process">
+                <button type="submit" class="btn btn-success pull-right">
+                    <i class="fa fa-credit-card"></i> Submit Payment
+                </button>
+                <input type="hidden" name="id" value="@ViewBag.invoice.Id"/>
+            </form>         
+        </div>
+    </div>
+    }
+</section>

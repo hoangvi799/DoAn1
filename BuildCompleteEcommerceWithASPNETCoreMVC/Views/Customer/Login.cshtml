@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a asp-controller="home" asp-action="index">Home</a> <span class="divider">/</span></li>
+        <li class="active">Login</li>
+    </ul>
+    <h3>Login</h3>
+    <div class="well">
+
+        @if (ViewBag.error != null)
+        {
+            <div class="alert alert-danger">
+                <p>
+                  @ViewBag.error
+                </p>
+            </div>
+        }
+
+        <form class="form-horizontal" asp-controller="customer" asp-action="login" method="post">
+            <div class="control-group">
+                <label class="control-label" for="username">Username <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="username" placeholder="Username" required="required" name="username">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Password <sup>*</sup></label>
+                <div class="controls">
+                    <input type="password" id="password" placeholder="Password" name="password">
+                </div>
+            </div>          
+
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-large btn-success" type="submit" value="Login">
+                    <br />
+                    <a asp-controller="customer" asp-action="register">Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

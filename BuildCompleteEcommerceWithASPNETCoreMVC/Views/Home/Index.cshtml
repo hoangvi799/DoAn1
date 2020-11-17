@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@using DoAn1.Models;
+
+<div class="span9">
+    <div class="well well-small">
+        <h4>Featured Products <small class="pull-right">@(ViewBag.CountFeaturedProducts)+ featured products</small></h4>
+        <div class="row-fluid">
+            <div id="featured" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                            @foreach (var featuredProduct in ViewBag.FeaturedProducts)
+                            {
+                                Product product = (Product)featuredProduct;
+                                Photo photo = product.Photos.SingleOrDefault(ph => ph.Status && ph.Featured);
+                                var photoName = photo == null ? "add.jpg" : photo.Name;
+                                <li class="span3">
+                                    <div class="thumbnail">
+                                        <i class="tag"></i>
+                                        <a asp-controller="product" asp-action="details" asp-route-id="@featuredProduct.Id"><img src="~/products/@photoName" alt=""></a>
+                                        <div class="caption">
+                                            <h5>@featuredProduct.Name</h5>
+                                            <h4><a class="btn" asp-controller="product" asp-action="details" asp-route-id="@featuredProduct.Id">VIEW</a> <span class="pull-right">VND @featuredProduct.Price</span></h4>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            </ul>
+                    </div>   
+                </div>
+                <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#featured" data-slide="next">›</a>
+            </div>
+        </div>
+    </div>
+    <h4>Latest Products </h4>
+    <ul class="thumbnails">
+        @foreach (var product in ViewBag.LatestProducts)
+        {
+
+            Product productInfo = (Product)product;
+            Photo photo = productInfo.Photos.SingleOrDefault(ph => ph.Status && ph.Featured);
+            var photoName = photo == null ? "add.jpg" : photo.Name;
+
+        <li class="span3">
+            <div class="thumbnail">
+                <a asp-controller="product" asp-action="details" asp-route-id="@product.Id"><img src="~/products/@photoName" alt=""></a>
+                <div class="caption">
+                    <h5>@productInfo.Name</h5>
+                    <p>
+                        @productInfo.Description
+                    </p>
+
+                    <h4 style="text-align:center">
+                    <a class="btn" asp-controller="product" asp-action="details" asp-route-id="@product.Id"> <i class="icon-zoom-in"></i></a> 
+                    <a class="btn" asp-controller="product" asp-action="details" asp-route-id="@productInfo.Id">Add to <i class="icon-shopping-cart"></i></a> 
+                    <a class="btn btn-primary" href="#">VND @productInfo.Price</a></h4>
+                </div>
+            </div>
+        </li>     
+        }
+    </ul>
+</div>

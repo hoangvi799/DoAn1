@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Photo of @ViewBag.Product.Name
+    </h1>
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Photo List</h3>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="photoTable" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Photo</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                                <th>Featured</th>                            
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var photo in ViewBag.Photos)
+                            {
+                            <tr>
+                                <td>@photo.Id</td>
+                                <td><img src="~/products/@photo.Name" width="120" /></td>
+                                <td>@(photo.Status ? "Show" : "Hide")</td>
+                                <td>
+                                    @if(!photo.Featured)
+                                    {
+                                        <a asp-area="admin" asp-controller="photo" asp-action="SetFeatured" asp-route-id="@photo.Id" asp-route-productId="@photo.ProductId">Set Featured</a>
+                                    } else
+                                    {
+                                        <span>Featured</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-area="admin" asp-controller="photo" asp-action="edit" asp-route-id="@photo.Id" asp-route-productId="@photo.ProductId">Edit</a> 
+                                    @if (!photo.Featured)
+                                    {
+                                        <span>|</span>
+                                    <a asp-area="admin" asp-controller="photo" asp-action="delete" asp-route-id="@photo.Id" asp-route-productId="@photo.ProductId" onclick="return confirm('Bạn có chắc chắn xóa?')">Delete</a>
+                                    }
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Photo</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                                <th>Featured</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $('#photoTable').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>
+

@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<ul id="sideManu" class="nav nav-tabs nav-stacked">
+    @foreach (var category in Model)
+    {
+    <li class="subMenu">
+        <a> @category.Name </a>
+        @if (category.InverseParents != null && category.InverseParents.Count > 0)
+        {
+        <ul style="display:none">
+            @foreach (var subCategory in category.InverseParents)
+            {
+                @if (subCategory.Status)
+                {
+                <li><a asp-controller="product" asp-action="category" asp-route-id="@subCategory.Id"><i class="icon-chevron-right"></i>@subCategory.Name</a></li>
+                }
+            }
+            </ul>
+        }
+    </li>
+    }
+</ul>

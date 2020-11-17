@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+    @using DoAn1.Models;
+
+    <ul class="breadcrumb">
+        <li><a asp-controller="home" asp-action="index">Home</a> <span class="divider">/</span></li>
+        <li><a href="#">Products</a> <span class="divider">/</span></li>
+        <li class="active">product Details</li>
+    </ul>
+    <div class="row">
+        <div id="gallery" class="span3">
+            <a href="~/products/@ViewBag.FeaturedPhoto" title="@ViewBag.Product.Name">
+                <img src="~/products/@ViewBag.FeaturedPhoto" style="width:100%" alt="@ViewBag.Product.Name" />
+            </a>
+            <div id="featured" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        @foreach (var productImage in ViewBag.ProductImages)
+                        {
+                            <a href="~/products/@productImage.Name"> <img style="width:29%" src="~/products/@productImage.Name" alt="" /></a>
+                        }
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <span class="btn"><i class="icon-envelope"></i></span>
+                    <span class="btn"><i class="icon-print"></i></span>
+                    <span class="btn"><i class="icon-zoom-in"></i></span>
+                    <span class="btn"><i class="icon-star"></i></span>
+                    <span class="btn"><i class=" icon-thumbs-up"></i></span>
+                    <span class="btn"><i class="icon-thumbs-down"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <h3>@ViewBag.Product.Name</h3>
+            <hr class="soft" />
+            <form class="form-horizontal qtyFrm" asp-controller="cart" asp-action="buy" method="post">
+                <div class="control-group">
+                    <label class="control-label"><span>VND @ViewBag.Product.Price</span></label>
+                    <div class="controls">
+                        <input type="number" min="1" name="quantity" value="1" class="span1" placeholder="Qty." />
+                        <input type="hidden" name="id" value="@ViewBag.Product.Id"/>
+                        <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <hr class="soft" />
+            <h4>@ViewBag.Product.Quantity items in stock</h4>
+
+            <hr class="soft clr" />
+            <p>
+                @ViewBag.Product.Description
+            </p>
+            <a class="btn btn-small pull-right" href="#detail">More Details</a>
+            <br class="clr" />
+            <a href="#" name="detail"></a>
+            <hr class="soft" />
+        </div>
+
+        <div class="span9">
+            <ul id="productDetail" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+                <li><a href="#profile" data-toggle="tab">Related Products</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                    @ViewBag.Product.Details
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <div id="myTab" class="pull-right">
+                        <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+                        <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+                    </div>
+                    <br class="clr" />
+                    <hr class="soft" />
+                    <div class="tab-content">
+                        <div class="tab-pane" id="listView">
+                            @foreach (var product in ViewBag.RelatedProducts)
+                            {
+                                Product productInfo = (Product)product;
+                                Photo photo = productInfo.Photos.SingleOrDefault(ph => ph.Status && ph.Featured);
+                                var photoName = photo == null ? "" : photo.Name;
+                                <div class="row">
+                                    <div class="span2">
+                                        <img src="~/products/@photoName" alt="" />
+                                    </div>
+                                    <div class="span4">
+                                        <h3>New | Available</h3>
+                                        <hr class="soft" />
+                                        <h5>@productInfo.Name</h5>
+                                        <p>
+                                            @productInfo.Description
+                                        </p>
+                                        <a class="btn btn-small pull-right" asp-controller="product" asp-action="details" asp-route-id="@product.Id">View Details</a>
+                                        <br class="clr" />
+                                    </div>
+                                    <div class="span3 alignR">
+                                        <form class="form-horizontal qtyFrm">
+                                            <h3> VND @productInfo.Price</h3>
+                                            <label class="checkbox">
+                                                <input type="checkbox">  Adds product to compair
+                                            </label><br />
+                                            <div class="btn-group">
+                                                <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+                                                <a asp-controller="product" asp-action="details" asp-route-id="@product.Id" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr class="soft" />
+                            }
+                        </div>
+                        <div class="tab-pane active" id="blockView">
+                            <ul class="thumbnails">
+                                @foreach (var product in ViewBag.RelatedProducts)
+                                {
+                                    Product productInfo = (Product)product;
+                                    Photo photo = productInfo.Photos.SingleOrDefault(ph => ph.Status && ph.Featured);
+                                    var photoName = photo == null ? "add.jpg" : photo.Name;
+                                    <li class="span3">
+                                        <div class="thumbnail">
+                                            <a asp-controller="product" asp-action="details" asp-route-id="@product.Id"><img src="~/products/@photoName" alt="" /></a>
+                                            <div class="caption">
+                                                <h5>@productInfo.Name</h5>
+                                                <p>
+                                                    @productInfo.Description
+                                                </p>
+                                                <h4 style="text-align:center">
+                                                    <a class="btn" asp-controller="product" asp-action="details" asp-route-id="@product.Id"> <i class="icon-zoom-in"></i></a>
+                                                    <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a>
+                                                    <a class="btn btn-primary" href="#">&euro; @productInfo.Price</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                            <hr class="soft" />
+                        </div>
+                    </div>
+                    <br class="clr">
+                </div>
+            </div>
+        </div>
+    </div>

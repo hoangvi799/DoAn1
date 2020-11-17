@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Customer Dashboard";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+   <li><a asp-controller="home" asp-action="index">Home</a> <span class="divider">/</span></li>
+   <li class="active">Invoice Details</li>
+</ul>
+
+    <section id="Table">
+        <div class="page-header">
+            <h3>XEM ĐƠN HÀNG</h3>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product Id</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var invoiceDetail in ViewBag.invoiceDetails)
+                        {
+                        <tr>
+                            <td>@invoiceDetail.Product.Id</td>
+                            <td>@invoiceDetail.Product.Name</td>
+                            <td>@invoiceDetail.Price</td>
+                            <td>@invoiceDetail.Quantity</td>
+                            <td>@(invoiceDetail.Price * invoiceDetail.Quantity)</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+

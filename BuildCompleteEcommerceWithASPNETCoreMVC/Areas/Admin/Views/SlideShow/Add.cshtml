@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model DoAn1.Models.SlideShow
+
+<section class="content-header">
+    <h1>
+        Add New SlideShow
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">SlideShow Information</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form method="post" asp-area="admin" asp-controller="slideshow" asp-action="add" enctype="multipart/form-data">
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">Photo</label>
+                            <input id="exampleInputFile" type="file" name="photo" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Title</label>
+                            <input type="text" class="form-control" asp-for="Title">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" asp-for="Description">
+                        </textarea>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" asp-for="Status"> Status
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<ul class="breadcrumb">
+    <li><a asp-controller="home">Home</a> <span class="divider">/</span></li>
+    <li class="active"> SHOPPING CART</li>
+</ul>
+<h3>  SHOPPING CART [ <small>@ViewBag.countItems Item(s) </small>]<a asp-controller="home" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+<hr class="soft" />
+
+<form method="post" asp-controller="cart" asp-action="update">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Quantity/Update</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in ViewBag.cart)
+            {
+
+                <tr>
+                    <td>
+                        <img src="~/products/@item.Photo" alt="" width="60">
+                    </td>
+                    <td>@item.Name</td>
+                    <td>
+                        <div class="input-append">
+                            <input class="span1" style="max-width:34px" placeholder="1"
+                                   id="appendedInputButtons" size="16" type="number" min="1" name="quantity" value="@item.Quantity">
+                            <button class="btn" type="submit"><i class="icon-pencil"></i></button>
+                            <a class="btn btn-danger"
+                               asp-controller="cart" asp-action="remove" asp-route-id="@item.Id">
+                                <i class="icon-remove icon-white"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td>VND @item.Price</td>
+                    <td>VND @(item.Price * item.Quantity)</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4" style="text-align:right"><strong>TOTAL</strong></td>
+                <td class="label label-important" style="display:block"> <strong> VND @ViewBag.Total </strong></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
+                        <div class="controls">
+                            <input type="text" class="input-medium" placeholder="CODE">
+                            <button type="submit" class="btn"> ADD </button>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<a asp-controller="home" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+@if (ViewBag.cart != null && ViewBag.countItems > 0)
+{
+    <a asp-controller="cart" asp-action="checkout" class="btn btn-large pull-right">Checkout<i class="icon-arrow-right"></i></a>
+}
